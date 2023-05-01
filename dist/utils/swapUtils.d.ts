@@ -22,4 +22,4 @@ export declare function createOrder({ network, postBody, apiKey, apiSecret, time
     network: Network;
     postBody: CreateOrderParams;
     timeout?: number;
-}): Promise<import("axios").AxiosResponse<any, any>>;
+}): Promise<any>;

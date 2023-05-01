@@ -30,7 +30,7 @@ function createPosition({ network, postBody, apiKey, apiSecret, }) {
             timeout: 120 * 1000,
             headers,
         });
-        return res;
+        return res.data;
     });
 }
 exports.createPosition = createPosition;
@@ -48,7 +48,7 @@ function getPositionDetails({ network, walletAddress, apiKey, apiSecret, }) {
             timeout: 120 * 1000,
             headers,
         });
-        return res;
+        return res.data;
     });
 }
 exports.getPositionDetails = getPositionDetails;
@@ -66,7 +66,7 @@ function removeLiquidityAndBurn({ network, postBody, apiKey, apiSecret, }) {
             timeout: 120 * 1000,
             headers,
         });
-        return res;
+        return res.data;
     });
 }
 exports.removeLiquidityAndBurn = removeLiquidityAndBurn;

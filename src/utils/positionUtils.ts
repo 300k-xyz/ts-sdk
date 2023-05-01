@@ -43,7 +43,7 @@ export async function createPosition({
     timeout: 120 * 1000,
     headers,
   });
-  return res;
+  return res.data;
 }
 
 export async function getPositionDetails({
@@ -69,7 +69,7 @@ export async function getPositionDetails({
     timeout: 120 * 1000,
     headers,
   });
-  return res;
+  return res.data;
 }
 
 export async function removeLiquidityAndBurn({
@@ -106,5 +106,5 @@ export async function removeLiquidityAndBurn({
     timeout: 120 * 1000,
     headers,
   });
-  return res;
+  return res.data;
 }

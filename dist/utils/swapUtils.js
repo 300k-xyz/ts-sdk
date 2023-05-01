@@ -30,7 +30,7 @@ function createOrder({ network, postBody, apiKey, apiSecret, timeout = 120 * 100
             timeout,
             headers,
         });
-        return res;
+        return res.data;
     });
 }
 exports.createOrder = createOrder;

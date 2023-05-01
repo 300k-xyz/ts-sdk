@@ -21,13 +21,13 @@ export declare function createPosition({ network, postBody, apiKey, apiSecret, }
         strategyId?: number;
         strategyType?: number;
     };
-}): Promise<import("axios").AxiosResponse<any, any>>;
+}): Promise<any>;
 export declare function getPositionDetails({ network, walletAddress, apiKey, apiSecret, }: {
     network: string;
     walletAddress: string;
     apiKey: string;
     apiSecret: string;
-}): Promise<import("axios").AxiosResponse<any, any>>;
+}): Promise<any>;
 export declare function removeLiquidityAndBurn({ network, postBody, apiKey, apiSecret, }: {
     apiKey: string;
     apiSecret: string;
@@ -44,4 +44,4 @@ export declare function removeLiquidityAndBurn({ network, postBody, apiKey, apiS
         strategyId?: number;
         strategyType?: number;
     };
-}): Promise<import("axios").AxiosResponse<any, any>>;
+}): Promise<any>;

@@ -46,5 +46,5 @@ export async function createOrder({
     timeout,
     headers,
   });
-  return res;
+  return res.data;
 }
