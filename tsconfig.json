@@ -14,11 +14,6 @@
     "esModuleInterop": true,
     "declarationDir": "./dist",
     "outDir": "./dist",
-    "paths": {
-      "@utils/*": ["utils/*"],
-      "@config/*": ["config/*"],
-      "@controllers/*": ["controllers/*"],
-    }
   },
   "exclude": [
     "node_modules",
