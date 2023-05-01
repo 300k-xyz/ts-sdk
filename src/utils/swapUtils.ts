@@ -18,7 +18,7 @@ export interface CreateOrderParams {
   traderAddress: string;
   newClientOrderId?: string;
   dynamicGasPrice?: boolean;
-  estimateGasOnly?: boolean;
+  estimateGasOnly?: boolean | 'skip';
 }
 
 export async function createOrder({
