@@ -3,7 +3,7 @@ import { create300kSignature } from './signUtils';
 import axios from 'axios';
 import { BASE_URL_300K_API } from './config';
 
-async function getOrderHistory({
+export async function getOrderHistory({
   apiKey,
   apiSecret,
   network,
