@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.removeLiquidityAndBurn = exports.getPositionDetails = exports.createPosition = void 0;
+exports.removeLiquidityAndBurn = exports.getPositionDetails = exports.getPositionDetail = exports.createPosition = void 0;
 const signUtils_1 = require("./signUtils");
 const axios_1 = __importDefault(require("axios"));
 const config_1 = require("./config");
@@ -34,10 +34,27 @@ function createPosition({ network, postBody, apiKey, apiSecret, }) {
     });
 }
 exports.createPosition = createPosition;
+function getPositionDetail({ network, tokenId, apiKey, apiSecret, }) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const ts = Date.now();
+        const path = `/api/${network}/v1/v3-position-detail`;
+        const url = `${config_1.BASE_URL_300K_API}${path}?tokenId=${tokenId}`;
+        const headers = {
+            'X-APIKEY': apiKey,
+            'X-TS': ts,
+            'X-SIGNATURE': (0, signUtils_1.create300kSignature)({ ts, method: 'POST', path, apiSecret, postData: {} }),
+        };
+        const res = yield axios_1.default.get(url, {
+            headers,
+        });
+        return res.data;
+    });
+}
+exports.getPositionDetail = getPositionDetail;
 function getPositionDetails({ network, walletAddress, apiKey, apiSecret, }) {
     return __awaiter(this, void 0, void 0, function* () {
         const ts = Date.now();
-        const path = `/api/${network}/v1/v3-position`;
+        const path = `/api/${network}/v1/v3-positions`;
         const url = `${config_1.BASE_URL_300K_API}${path}?walletAddress=${walletAddress}`;
         const headers = {
             'X-APIKEY': apiKey,
@@ -45,7 +62,6 @@ function getPositionDetails({ network, walletAddress, apiKey, apiSecret, }) {
             'X-SIGNATURE': (0, signUtils_1.create300kSignature)({ ts, method: 'POST', path, apiSecret, postData: {} }),
         };
         const res = yield axios_1.default.get(url, {
-            timeout: 120 * 1000,
             headers,
         });
         return res.data;

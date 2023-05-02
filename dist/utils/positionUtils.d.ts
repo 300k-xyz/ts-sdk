@@ -1,4 +1,48 @@
 import { Network } from './network';
+export interface V3Position {
+    tokenId: number;
+    nonce: string;
+    operator: string;
+    token0: string;
+    token1: string;
+    fee: number;
+    tickLower: number;
+    tickUpper: number;
+    liquidity: string;
+    feeGrowthInside0LastX128: string;
+    feeGrowthInside1LastX128: string;
+    tokensOwed0: string;
+    tokensOwed1: string;
+    token0Symbol: string;
+    token1Symbol: string;
+    token0Decimals: number;
+    token1Decimals: number;
+    priceLower: string;
+    priceUpper: string;
+    priceLowerInvert: string;
+    priceUpperInvert: string;
+    amount0: string;
+    amount1: string;
+    sqrtPriceX96: string;
+    tick: number;
+    poolAddress: string;
+}
+export interface CreatePositionResponse {
+    blockHash: string;
+    blockNumber: number;
+    contractAddress: any;
+    cumulativeGasUsed: number;
+    effectiveGasPrice: number;
+    from: string;
+    gasUsed: number;
+    logsBloom: string;
+    status: boolean;
+    to: string;
+    transactionHash: string;
+    transactionIndex: number;
+    type: string;
+    events: any;
+}
 export declare function createPosition({ network, postBody, apiKey, apiSecret, }: {
     apiKey: string;
     apiSecret: string;
@@ -21,13 +65,19 @@ export declare function createPosition({ network, postBody, apiKey, apiSecret, }
         strategyId?: number;
         strategyType?: number;
     };
-}): Promise<any>;
+}): Promise<CreatePositionResponse>;
+export declare function getPositionDetail({ network, tokenId, apiKey, apiSecret, }: {
+    network: string;
+    tokenId: number;
+    apiKey: string;
+    apiSecret: string;
+}): Promise<V3Position>;
 export declare function getPositionDetails({ network, walletAddress, apiKey, apiSecret, }: {
     network: string;
     walletAddress: string;
     apiKey: string;
     apiSecret: string;
-}): Promise<any>;
+}): Promise<V3Position[]>;
 export declare function removeLiquidityAndBurn({ network, postBody, apiKey, apiSecret, }: {
     apiKey: string;
     apiSecret: string;
