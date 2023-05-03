@@ -59,7 +59,7 @@ function getPositionDetails({ network, walletAddress, apiKey, apiSecret, }) {
         const headers = {
             'X-APIKEY': apiKey,
             'X-TS': ts,
-            'X-SIGNATURE': (0, signUtils_1.create300kSignature)({ ts, method: 'POST', path, apiSecret, postData: {} }),
+            'X-SIGNATURE': (0, signUtils_1.create300kSignature)({ ts, method: 'GET', path, apiSecret, postData: {} }),
         };
         const res = yield axios_1.default.get(url, {
             headers,

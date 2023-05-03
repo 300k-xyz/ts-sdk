@@ -133,7 +133,7 @@ export async function getPositionDetails({
   const headers = {
     'X-APIKEY': apiKey,
     'X-TS': ts,
-    'X-SIGNATURE': create300kSignature({ ts, method: 'POST', path, apiSecret, postData: {} }),
+    'X-SIGNATURE': create300kSignature({ ts, method: 'GET', path, apiSecret, postData: {} }),
   };
   const res = await axios.get(url, {
     headers,
