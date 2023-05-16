@@ -1,5 +1,5 @@
 import { Network } from './network';
-import { create300kSignature } from './signUtils';
+import { create300kApiHeader, create300kSignature } from './signUtils';
 import axios from 'axios';
 import { BASE_URL_300K_API } from './config';
 
@@ -37,11 +37,8 @@ export async function createOrder({
   const ts = Date.now();
   const path = `/api/${network}/v1/order`;
   const url = `${BASE_URL_300K_API}${path}`;
-  const headers = {
-    'X-APIKEY': apiKey,
-    'X-TS': ts,
-    'X-SIGNATURE': create300kSignature({ ts, method: 'POST', path, apiSecret, postData: postBody }),
-  };
+
+  const headers = create300kApiHeader({ ts, method: 'POST', path, apiKey, apiSecret, postData: postBody });
   const res = await axios.post(url, postBody, {
     timeout,
     headers,

@@ -21,11 +21,7 @@ function createPosition({ network, postBody, apiKey, apiSecret, }) {
         const ts = Date.now();
         const path = `/api/${network}/v1/v3-position`;
         const url = `${config_1.BASE_URL_300K_API}${path}`;
-        const headers = {
-            'X-APIKEY': apiKey,
-            'X-TS': ts,
-            'X-SIGNATURE': (0, signUtils_1.create300kSignature)({ ts, method: 'POST', path, apiSecret, postData: postBody }),
-        };
+        const headers = (0, signUtils_1.create300kApiHeader)({ ts, method: 'POST', path, apiKey, apiSecret, postData: postBody });
         const res = yield axios_1.default.post(url, postBody, {
             timeout: 120 * 1000,
             headers,
@@ -39,11 +35,7 @@ function getPositionDetail({ network, tokenId, apiKey, apiSecret, }) {
         const ts = Date.now();
         const path = `/api/${network}/v1/v3-position-detail`;
         const url = `${config_1.BASE_URL_300K_API}${path}?tokenId=${tokenId}`;
-        const headers = {
-            'X-APIKEY': apiKey,
-            'X-TS': ts,
-            'X-SIGNATURE': (0, signUtils_1.create300kSignature)({ ts, method: 'POST', path, apiSecret, postData: {} }),
-        };
+        const headers = (0, signUtils_1.create300kApiHeader)({ ts, method: 'POST', path, apiKey, apiSecret, postData: {} });
         const res = yield axios_1.default.get(url, {
             headers,
         });
@@ -56,11 +48,7 @@ function getPositionDetails({ network, walletAddress, apiKey, apiSecret, }) {
         const ts = Date.now();
         const path = `/api/${network}/v1/v3-positions`;
         const url = `${config_1.BASE_URL_300K_API}${path}?walletAddress=${walletAddress}`;
-        const headers = {
-            'X-APIKEY': apiKey,
-            'X-TS': ts,
-            'X-SIGNATURE': (0, signUtils_1.create300kSignature)({ ts, method: 'GET', path, apiSecret, postData: {} }),
-        };
+        const headers = (0, signUtils_1.create300kApiHeader)({ ts, method: 'POST', path, apiKey, apiSecret, postData: {} });
         const res = yield axios_1.default.get(url, {
             headers,
         });
@@ -73,11 +61,7 @@ function removeLiquidityAndBurn({ network, postBody, apiKey, apiSecret, }) {
         const ts = Date.now();
         const path = `/api/${network}/v1/remove-v3-position`;
         const url = `${config_1.BASE_URL_300K_API}${path}`;
-        const headers = {
-            'X-APIKEY': apiKey,
-            'X-TS': ts,
-            'X-SIGNATURE': (0, signUtils_1.create300kSignature)({ ts, method: 'POST', path, apiSecret, postData: postBody }),
-        };
+        const headers = (0, signUtils_1.create300kApiHeader)({ ts, method: 'POST', path, apiKey, apiSecret, postData: postBody });
         const res = yield axios_1.default.post(url, postBody, {
             timeout: 120 * 1000,
             headers,

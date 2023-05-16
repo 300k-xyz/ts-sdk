@@ -1,5 +1,5 @@
 import { Network } from './network';
-import { create300kSignature } from './signUtils';
+import { create300kApiHeader, create300kSignature } from './signUtils';
 import axios from 'axios';
 import { BASE_URL_300K_API } from './config';
 
@@ -79,11 +79,7 @@ export async function createPosition({
   const ts = Date.now();
   const path = `/api/${network}/v1/v3-position`;
   const url = `${BASE_URL_300K_API}${path}`;
-  const headers = {
-    'X-APIKEY': apiKey,
-    'X-TS': ts,
-    'X-SIGNATURE': create300kSignature({ ts, method: 'POST', path, apiSecret, postData: postBody }),
-  };
+  const headers = create300kApiHeader({ ts, method: 'POST', path, apiKey, apiSecret, postData: postBody });
   const res = await axios.post(url, postBody, {
     timeout: 120 * 1000,
     headers,
@@ -105,11 +101,7 @@ export async function getPositionDetail({
   const ts = Date.now();
   const path = `/api/${network}/v1/v3-position-detail`;
   const url = `${BASE_URL_300K_API}${path}?tokenId=${tokenId}`;
-  const headers = {
-    'X-APIKEY': apiKey,
-    'X-TS': ts,
-    'X-SIGNATURE': create300kSignature({ ts, method: 'POST', path, apiSecret, postData: {} }),
-  };
+  const headers = create300kApiHeader({ ts, method: 'POST', path, apiKey, apiSecret, postData: {} });
   const res = await axios.get(url, {
     headers,
   });
@@ -130,11 +122,7 @@ export async function getPositionDetails({
   const ts = Date.now();
   const path = `/api/${network}/v1/v3-positions`;
   const url = `${BASE_URL_300K_API}${path}?walletAddress=${walletAddress}`;
-  const headers = {
-    'X-APIKEY': apiKey,
-    'X-TS': ts,
-    'X-SIGNATURE': create300kSignature({ ts, method: 'GET', path, apiSecret, postData: {} }),
-  };
+  const headers = create300kApiHeader({ ts, method: 'POST', path, apiKey, apiSecret, postData: {} });
   const res = await axios.get(url, {
     headers,
   });
@@ -166,11 +154,7 @@ export async function removeLiquidityAndBurn({
   const ts = Date.now();
   const path = `/api/${network}/v1/remove-v3-position`;
   const url = `${BASE_URL_300K_API}${path}`;
-  const headers = {
-    'X-APIKEY': apiKey,
-    'X-TS': ts,
-    'X-SIGNATURE': create300kSignature({ ts, method: 'POST', path, apiSecret, postData: postBody }),
-  };
+  const headers = create300kApiHeader({ ts, method: 'POST', path, apiKey, apiSecret, postData: postBody });
   const res = await axios.post(url, postBody, {
     timeout: 120 * 1000,
     headers,

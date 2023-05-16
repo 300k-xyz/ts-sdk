@@ -21,11 +21,7 @@ function createOrder({ network, postBody, apiKey, apiSecret, timeout = 120 * 100
         const ts = Date.now();
         const path = `/api/${network}/v1/order`;
         const url = `${config_1.BASE_URL_300K_API}${path}`;
-        const headers = {
-            'X-APIKEY': apiKey,
-            'X-TS': ts,
-            'X-SIGNATURE': (0, signUtils_1.create300kSignature)({ ts, method: 'POST', path, apiSecret, postData: postBody }),
-        };
+        const headers = (0, signUtils_1.create300kApiHeader)({ ts, method: 'POST', path, apiKey, apiSecret, postData: postBody });
         const res = yield axios_1.default.post(url, postBody, {
             timeout,
             headers,
