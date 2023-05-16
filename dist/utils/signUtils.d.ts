@@ -6,7 +6,7 @@ export declare function create300kSignature({ ts, method, path, apiSecret, postD
     apiSecret: string;
     postData?: any;
 }): string;
-export declare function create300kApiHeader({ method, path, apiSecret, postData, ts: tsOverride, }: {
+export declare function create300kApiHeader({ method, path, apiKey, apiSecret, postData, ts: tsOverride, }: {
     method: Method;
     path: string;
     apiKey: string;

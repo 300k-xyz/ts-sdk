@@ -15,7 +15,7 @@ test('signUtils header with no post body', (t) => {
   });
 
   t.deepEqual(header, {
-    'X-APIKEY': '63fba8b596acd8e3f1d99f84a873fd20e5',
+    'X-APIKEY': apiKey,
     'X-TS': 1684209109427,
     'X-SIGNATURE': 'db35e14f46f005bb15d09ce4fec9f7fd6dbb562278f708f374268dd6a01a94bf',
   });
@@ -34,7 +34,7 @@ test('signUtils header with post body', (t) => {
   });
 
   t.deepEqual(header, {
-    'X-APIKEY': '63fba8b596acd8e3f1d99f84a873fd20e5',
+    'X-APIKEY': apiKey,
     'X-TS': 1684209109427,
     'X-SIGNATURE': 'ce0f653adba9df22c4b2ea0bc409250bb4d1465ba9c124a2549b0bae38cb5428',
   });

@@ -24,6 +24,7 @@ export function create300kSignature({
 export function create300kApiHeader({
   method,
   path,
+  apiKey,
   apiSecret,
   postData,
   ts: tsOverride,
@@ -37,7 +38,7 @@ export function create300kApiHeader({
 }) {
   const ts = tsOverride || Date.now();
   return {
-    'X-APIKEY': '63fba8b596acd8e3f1d99f84a873fd20e5',
+    'X-APIKEY': apiKey,
     'X-TS': ts,
     'X-SIGNATURE': create300kSignature({ ts, method, path, apiSecret, postData }),
   };
