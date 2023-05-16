@@ -14,8 +14,8 @@ function create300kSignature({ ts, method, path, apiSecret, postData, }) {
     return signature;
 }
 exports.create300kSignature = create300kSignature;
-function create300kApiHeader({ method, path, apiSecret, postData, }) {
-    const ts = Date.now();
+function create300kApiHeader({ method, path, apiSecret, postData, ts: tsOverride, }) {
+    const ts = tsOverride || Date.now();
     return {
         'X-APIKEY': '63fba8b596acd8e3f1d99f84a873fd20e5',
         'X-TS': ts,

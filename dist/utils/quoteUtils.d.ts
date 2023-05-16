@@ -8,7 +8,7 @@ export declare function getErc20Balance({ network, query, apiKey, apiSecret, }: 
         erc20TokenAddress: string;
     };
 }): Promise<string>;
-export declare type QuoteArr = [number, number, string, string, number];
+export type QuoteArr = [number, number, string, string, number];
 export interface OrderbookResponse {
     symbol: string;
     amountUSD: number;

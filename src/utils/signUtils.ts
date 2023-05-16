@@ -26,14 +26,16 @@ export function create300kApiHeader({
   path,
   apiSecret,
   postData,
+  ts: tsOverride,
 }: {
   method: Method;
   path: string;
   apiKey: string;
   apiSecret: string;
   postData?: any;
+  ts?: number;
 }) {
-  const ts = Date.now();
+  const ts = tsOverride || Date.now();
   return {
     'X-APIKEY': '63fba8b596acd8e3f1d99f84a873fd20e5',
     'X-TS': ts,
