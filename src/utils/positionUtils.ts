@@ -122,7 +122,7 @@ export async function getPositionDetails({
   const ts = Date.now();
   const path = `/api/${network}/v1/v3-positions`;
   const url = `${BASE_URL_300K_API}${path}?walletAddress=${walletAddress}`;
-  const headers = create300kApiHeader({ ts, method: 'POST', path, apiKey, apiSecret, postData: {} });
+  const headers = create300kApiHeader({ ts, method: 'GET', path, apiKey, apiSecret, postData: {} });
   const res = await axios.get(url, {
     headers,
   });

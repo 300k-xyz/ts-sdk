@@ -48,7 +48,7 @@ function getPositionDetails({ network, walletAddress, apiKey, apiSecret, }) {
         const ts = Date.now();
         const path = `/api/${network}/v1/v3-positions`;
         const url = `${config_1.BASE_URL_300K_API}${path}?walletAddress=${walletAddress}`;
-        const headers = (0, signUtils_1.create300kApiHeader)({ ts, method: 'POST', path, apiKey, apiSecret, postData: {} });
+        const headers = (0, signUtils_1.create300kApiHeader)({ ts, method: 'GET', path, apiKey, apiSecret, postData: {} });
         const res = yield axios_1.default.get(url, {
             headers,
         });
