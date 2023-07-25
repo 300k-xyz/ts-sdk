@@ -30,11 +30,14 @@ function createPosition({ network, postBody, apiKey, apiSecret, }) {
     });
 }
 exports.createPosition = createPosition;
-function getPositionDetail({ network, tokenId, apiKey, apiSecret, }) {
+function getPositionDetail({ network, tokenId, apiKey, apiSecret, withUnclaimedFees, }) {
     return __awaiter(this, void 0, void 0, function* () {
         const ts = Date.now();
         const path = `/api/${network}/v1/v3-position-detail`;
-        const url = `${config_1.BASE_URL_300K_API}${path}?tokenId=${tokenId}`;
+        let url = `${config_1.BASE_URL_300K_API}${path}?tokenId=${tokenId}`;
+        if (withUnclaimedFees) {
+            url = `${url}&withUnclaimedFees=true`;
+        }
         const headers = (0, signUtils_1.create300kApiHeader)({ ts, method: 'GET', path, apiKey, apiSecret, postData: {} });
         const res = yield axios_1.default.get(url, {
             headers,
@@ -43,11 +46,14 @@ function getPositionDetail({ network, tokenId, apiKey, apiSecret, }) {
     });
 }
 exports.getPositionDetail = getPositionDetail;
-function getPositionDetails({ network, walletAddress, apiKey, apiSecret, }) {
+function getPositionDetails({ network, walletAddress, withUnclaimedFees, apiKey, apiSecret, }) {
     return __awaiter(this, void 0, void 0, function* () {
         const ts = Date.now();
         const path = `/api/${network}/v1/v3-positions`;
-        const url = `${config_1.BASE_URL_300K_API}${path}?walletAddress=${walletAddress}`;
+        let url = `${config_1.BASE_URL_300K_API}${path}?walletAddress=${walletAddress}`;
+        if (withUnclaimedFees) {
+            url = `${url}&withUnclaimedFees=true`;
+        }
         const headers = (0, signUtils_1.create300kApiHeader)({ ts, method: 'GET', path, apiKey, apiSecret, postData: {} });
         const res = yield axios_1.default.get(url, {
             headers,

@@ -66,15 +66,17 @@ export declare function createPosition({ network, postBody, apiKey, apiSecret, }
         strategyType?: number;
     };
 }): Promise<CreatePositionResponse>;
-export declare function getPositionDetail({ network, tokenId, apiKey, apiSecret, }: {
+export declare function getPositionDetail({ network, tokenId, apiKey, apiSecret, withUnclaimedFees, }: {
     network: string;
     tokenId: number;
+    withUnclaimedFees?: boolean;
     apiKey: string;
     apiSecret: string;
 }): Promise<V3Position>;
-export declare function getPositionDetails({ network, walletAddress, apiKey, apiSecret, }: {
+export declare function getPositionDetails({ network, walletAddress, withUnclaimedFees, apiKey, apiSecret, }: {
     network: string;
     walletAddress: string;
+    withUnclaimedFees?: boolean;
     apiKey: string;
     apiSecret: string;
 }): Promise<V3Position[]>;

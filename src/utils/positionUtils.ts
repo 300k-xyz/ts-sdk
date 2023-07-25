@@ -92,15 +92,20 @@ export async function getPositionDetail({
   tokenId,
   apiKey,
   apiSecret,
+  withUnclaimedFees,
 }: {
   network: string;
   tokenId: number;
+  withUnclaimedFees?: boolean;
   apiKey: string;
   apiSecret: string;
 }): Promise<V3Position> {
   const ts = Date.now();
   const path = `/api/${network}/v1/v3-position-detail`;
-  const url = `${BASE_URL_300K_API}${path}?tokenId=${tokenId}`;
+  let url = `${BASE_URL_300K_API}${path}?tokenId=${tokenId}`;
+  if (withUnclaimedFees) {
+    url = `${url}&withUnclaimedFees=true`;
+  }
   const headers = create300kApiHeader({ ts, method: 'GET', path, apiKey, apiSecret, postData: {} });
   const res = await axios.get(url, {
     headers,
@@ -111,17 +116,22 @@ export async function getPositionDetail({
 export async function getPositionDetails({
   network,
   walletAddress,
+  withUnclaimedFees,
   apiKey,
   apiSecret,
 }: {
   network: string;
   walletAddress: string;
+  withUnclaimedFees?: boolean;
   apiKey: string;
   apiSecret: string;
 }): Promise<V3Position[]> {
   const ts = Date.now();
   const path = `/api/${network}/v1/v3-positions`;
-  const url = `${BASE_URL_300K_API}${path}?walletAddress=${walletAddress}`;
+  let url = `${BASE_URL_300K_API}${path}?walletAddress=${walletAddress}`;
+  if (withUnclaimedFees) {
+    url = `${url}&withUnclaimedFees=true`;
+  }
   const headers = create300kApiHeader({ ts, method: 'GET', path, apiKey, apiSecret, postData: {} });
   const res = await axios.get(url, {
     headers,
