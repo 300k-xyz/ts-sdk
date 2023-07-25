@@ -18,7 +18,7 @@ export declare function getOrderBook({ network, query, apiKey, apiSecret, }: {
         amountQuote?: number;
     };
 }): Promise<OrderbookResponse>;
-export interface QuoteResult {
+export interface QuoteResponse {
     blockNumber: string;
     amount: string;
     amountDecimals: string;
@@ -77,4 +77,4 @@ export declare function getQuote({ network, query, apiKey, apiSecret, }: {
         amount: string;
         maxAllowedSlippage?: string;
     };
-}): Promise<OrderbookResponse>;
+}): Promise<QuoteResponse>;

@@ -48,7 +48,7 @@ export async function getOrderBook({
   const res = await axios.get<OrderbookResponse>(url, { params: query, headers });
   return res.data;
 }
-export interface QuoteResult {
+export interface QuoteResponse {
   blockNumber: string;
   amount: string;
   amountDecimals: string;
@@ -119,7 +119,7 @@ export async function getQuote({
     amount: string;
     maxAllowedSlippage?: string;
   };
-}): Promise<OrderbookResponse> {
+}): Promise<QuoteResponse> {
   const ts = Date.now();
   const path = `/api/${network}/v1/rfq/quote `;
   const url = `${BASE_URL_300K_API}${path}`;
@@ -128,6 +128,6 @@ export async function getQuote({
     'X-TS': ts,
     'X-SIGNATURE': create300kSignature({ ts, method: 'GET', path, apiSecret, postData: {} }),
   };
-  const res = await axios.get<OrderbookResponse>(url, { params: query, headers });
+  const res = await axios.get<QuoteResponse>(url, { params: query, headers });
   return res.data;
 }
