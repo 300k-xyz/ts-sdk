@@ -23,8 +23,10 @@ export interface V3Position {
   token1Decimals: number;
   priceLower: string;
   priceUpper: string;
+  price: string;
   priceLowerInvert: string;
   priceUpperInvert: string;
+  priceInvert: string;
   amount0: string;
   amount1: string;
   sqrtPriceX96: string;
