@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getOrderBook = void 0;
+exports.getQuote = exports.getOrderBook = void 0;
 const config_1 = require("./config");
 const signUtils_1 = require("./signUtils");
 const axios_1 = __importDefault(require("axios"));
@@ -35,3 +35,18 @@ function getOrderBook({ network, query, apiKey, apiSecret, }) {
     });
 }
 exports.getOrderBook = getOrderBook;
+function getQuote({ network, query, apiKey, apiSecret, }) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const ts = Date.now();
+        const path = `/api/${network}/v1/rfq/quote `;
+        const url = `${config_1.BASE_URL_300K_API}${path}`;
+        const headers = {
+            'X-APIKEY': apiKey,
+            'X-TS': ts,
+            'X-SIGNATURE': (0, signUtils_1.create300kSignature)({ ts, method: 'GET', path, apiSecret, postData: {} }),
+        };
+        const res = yield axios_1.default.get(url, { params: query, headers });
+        return res.data;
+    });
+}
+exports.getQuote = getQuote;
