@@ -26,6 +26,9 @@ export interface V3Position {
     sqrtPriceX96: string;
     tick: number;
     poolAddress: string;
+    unclaimedFee0?: string;
+    unclaimedFee1?: string;
+    owner?: string;
 }
 export interface CreatePositionResponse {
     blockHash: string;
