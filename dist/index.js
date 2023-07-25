@@ -21,3 +21,4 @@ __exportStar(require("./utils/positionUtils"), exports);
 __exportStar(require("./utils/swapUtils"), exports);
 __exportStar(require("./utils/quoteUtils"), exports);
 __exportStar(require("./utils/orderUtils"), exports);
+__exportStar(require("./utils/balanceUtils"), exports);
