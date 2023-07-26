@@ -48,6 +48,21 @@ export interface CreatePositionResponse {
     type: string;
     events: any;
 }
+export declare function parseLog(data: {
+    topics: string[];
+    address: string;
+    data: string;
+}): {
+    name: string;
+    msg: string;
+    positionId: number;
+} | null;
+export declare function parseEvent(event: any): {
+    name: string;
+    msg: string;
+    positionId: number;
+} | null;
+export declare function getPositionIdFromEvents(events: any): number | null;
 export declare function createPosition({ network, postBody, apiKey, apiSecret, }: {
     apiKey: string;
     apiSecret: string;

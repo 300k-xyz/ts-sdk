@@ -53,6 +53,45 @@ export interface CreatePositionResponse {
   type: string;
   events: any;
 }
+const increaseLiquidityEventHash = '0x3067048beee31b25b2f1681f88dac838c8bba36af25bfb2b7cf7473a5847e35f';
+
+export function parseLog(data: { topics: string[]; address: string; data: string }) {
+  if (!data) {
+    return null;
+  }
+  switch (data.topics[0]) {
+    case increaseLiquidityEventHash: {
+      const positionId = parseInt(data.topics[1].slice(2), 16);
+      return {
+        name: 'IncreaseLiquidity',
+        msg: `IncreaseLiquidity position id ${positionId}`,
+        positionId,
+      };
+    }
+
+    default:
+      return null;
+  }
+}
+
+export function parseEvent(event: any) {
+  if (!event) return null;
+  const { raw } = event;
+  if (!raw || !raw.topics) {
+    return null;
+  }
+  return parseLog({ topics: raw.topics, address: event.address, data: raw.data });
+}
+
+export function getPositionIdFromEvents(events: any): number | null {
+  for (let key in events) {
+    const event = events[key];
+    const eventParsed = parseEvent(event);
+    if (eventParsed?.name === 'IncreaseLiquidity') return eventParsed.positionId;
+  }
+  return null;
+}
+
 export async function createPosition({
   network,
   postBody,
