@@ -27,7 +27,7 @@ function getErc20Balance({ network, query, apiKey, apiSecret, }) {
             'X-SIGNATURE': (0, signUtils_1.create300kSignature)({ ts, method: 'GET', path, apiSecret, postData: {} }),
         };
         const res = yield axios_1.default.get(url, { params: query, headers });
-        return res.data;
+        return res.data.result;
     });
 }
 exports.getErc20Balance = getErc20Balance;

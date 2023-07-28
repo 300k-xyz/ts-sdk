@@ -26,5 +26,5 @@ export async function getErc20Balance({
     'X-SIGNATURE': create300kSignature({ ts, method: 'GET', path, apiSecret, postData: {} }),
   };
   const res = await axios.get(url, { params: query, headers });
-  return res.data;
+  return res.data.result;
 }
