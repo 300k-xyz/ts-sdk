@@ -65,7 +65,7 @@ function createPosition({ network, postBody, apiKey, apiSecret, }) {
             timeout: 120 * 1000,
             headers,
         });
-        return res.data;
+        return res.data.result;
     });
 }
 exports.createPosition = createPosition;

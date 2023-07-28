@@ -128,7 +128,7 @@ export async function createPosition({
     timeout: 120 * 1000,
     headers,
   });
-  return res.data;
+  return res.data.result;
 }
 
 export async function getPositionDetail({
