@@ -35,7 +35,7 @@ function getOrderBook({ network, query, apiKey, apiSecret, }) {
     });
 }
 exports.getOrderBook = getOrderBook;
-function getQuote({ network, query, apiKey, apiSecret, }) {
+function getQuote({ network, query, apiKey, apiSecret, timeout = 120000 }) {
     return __awaiter(this, void 0, void 0, function* () {
         const ts = Date.now();
         const path = `/api/${network}/v1/rfq/quote `;
@@ -45,7 +45,7 @@ function getQuote({ network, query, apiKey, apiSecret, }) {
             'X-TS': ts,
             'X-SIGNATURE': (0, signUtils_1.create300kSignature)({ ts, method: 'GET', path, apiSecret, postData: {} }),
         };
-        const res = yield axios_1.default.get(url, { params: query, headers });
+        const res = yield axios_1.default.get(url, { params: query, headers, timeout });
         return res.data;
     });
 }

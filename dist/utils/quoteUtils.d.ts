@@ -67,7 +67,7 @@ export interface RawTxPartial {
     to: string;
     data: string;
 }
-export declare function getQuote({ network, query, apiKey, apiSecret, }: {
+export declare function getQuote({ network, query, apiKey, apiSecret, timeout }: {
     apiKey: string;
     apiSecret: string;
     network: Network;
@@ -77,4 +77,5 @@ export declare function getQuote({ network, query, apiKey, apiSecret, }: {
         amount: string;
         maxAllowedSlippage?: string;
     };
+    timeout?: number;
 }): Promise<QuoteResponse>;

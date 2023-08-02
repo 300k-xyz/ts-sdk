@@ -109,6 +109,7 @@ export async function getQuote({
   query,
   apiKey,
   apiSecret,
+  timeout = 120000,
 }: {
   apiKey: string;
   apiSecret: string;
@@ -119,6 +120,7 @@ export async function getQuote({
     amount: string;
     maxAllowedSlippage?: string;
   };
+  timeout?: number;
 }): Promise<QuoteResponse> {
   const ts = Date.now();
   const path = `/api/${network}/v1/rfq/quote `;
@@ -128,6 +130,6 @@ export async function getQuote({
     'X-TS': ts,
     'X-SIGNATURE': create300kSignature({ ts, method: 'GET', path, apiSecret, postData: {} }),
   };
-  const res = await axios.get<QuoteResponse>(url, { params: query, headers });
+  const res = await axios.get<QuoteResponse>(url, { params: query, headers, timeout });
   return res.data;
 }
