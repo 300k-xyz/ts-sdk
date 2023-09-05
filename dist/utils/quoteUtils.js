@@ -35,7 +35,7 @@ function getOrderBook({ network, query, apiKey, apiSecret, }) {
     });
 }
 exports.getOrderBook = getOrderBook;
-function getQuote({ network, query, apiKey, apiSecret, timeout = 120000 }) {
+function getQuote({ network, query, apiKey, apiSecret, timeout = 120000, }) {
     return __awaiter(this, void 0, void 0, function* () {
         const ts = Date.now();
         const path = `/api/${network}/v1/rfq/quote `;

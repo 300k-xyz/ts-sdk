@@ -131,6 +131,79 @@ export async function createPosition({
   return res.data.result;
 }
 
+export async function increaseLiquidity({
+  network,
+  postBody,
+  apiKey,
+  apiSecret,
+}: {
+  apiKey: string;
+  apiSecret: string;
+  network: Network;
+  postBody: {
+    traderAddress: string;
+    walletAddress: string;
+    tokenId: number;
+    amount0Desired: number;
+    amount1Desired: number;
+    amount0Min: number;
+    amount1Min: number;
+    newClientOrderId?: string;
+    gasPrice?: string;
+    maxPriorityFeePerGas?: string;
+    estimateGasOnly?: boolean | 'skip';
+    strategyId?: number;
+    strategyType?: number;
+    autoSwap?: boolean; // if enabled, will try to auto swap for enough tokens before adding liquidity
+  };
+}): Promise<CreatePositionResponse> {
+  const ts = Date.now();
+  const path = `/api/${network}/v1/adjust-liquidity`;
+  const url = `${BASE_URL_300K_API}${path}`;
+  const headers = create300kApiHeader({ ts, method: 'POST', path, apiKey, apiSecret, postData: postBody });
+  const res = await axios.post(url, postBody, {
+    timeout: 120 * 1000,
+    headers,
+  });
+  return res.data.result;
+}
+
+export async function decreaseLiquidity({
+  network,
+  postBody,
+  apiKey,
+  apiSecret,
+}: {
+  apiKey: string;
+  apiSecret: string;
+  network: Network;
+  postBody: {
+    traderAddress: string;
+    walletAddress: string;
+    tokenId: number;
+    liquidity: string;
+    amount0Desired: number;
+    amount1Desired: number;
+    newClientOrderId?: string;
+    gasPrice?: string;
+    maxPriorityFeePerGas?: string;
+    estimateGasOnly?: boolean | 'skip';
+    strategyId?: number;
+    strategyType?: number;
+    autoSwap?: boolean; // if enabled, will try to auto swap for enough tokens before adding liquidity
+  };
+}): Promise<CreatePositionResponse> {
+  const ts = Date.now();
+  const path = `/api/${network}/v1/adjust-liquidity`;
+  const url = `${BASE_URL_300K_API}${path}`;
+  const headers = create300kApiHeader({ ts, method: 'POST', path, apiKey, apiSecret, postData: postBody });
+  const res = await axios.post(url, postBody, {
+    timeout: 120 * 1000,
+    headers,
+  });
+  return res.data.result;
+}
+
 export async function getPositionDetail({
   network,
   tokenId,

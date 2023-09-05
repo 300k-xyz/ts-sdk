@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.removeLiquidityAndBurn = exports.getPositionDetails = exports.getPositionDetail = exports.createPosition = exports.getPositionIdFromEvents = exports.parseEvent = exports.parseLog = void 0;
+exports.removeLiquidityAndBurn = exports.getPositionDetails = exports.getPositionDetail = exports.decreaseLiquidity = exports.increaseLiquidity = exports.createPosition = exports.getPositionIdFromEvents = exports.parseEvent = exports.parseLog = void 0;
 const signUtils_1 = require("./signUtils");
 const axios_1 = __importDefault(require("axios"));
 const config_1 = require("./config");
@@ -69,6 +69,34 @@ function createPosition({ network, postBody, apiKey, apiSecret, }) {
     });
 }
 exports.createPosition = createPosition;
+function increaseLiquidity({ network, postBody, apiKey, apiSecret, }) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const ts = Date.now();
+        const path = `/api/${network}/v1/adjust-liquidity`;
+        const url = `${config_1.BASE_URL_300K_API}${path}`;
+        const headers = (0, signUtils_1.create300kApiHeader)({ ts, method: 'POST', path, apiKey, apiSecret, postData: postBody });
+        const res = yield axios_1.default.post(url, postBody, {
+            timeout: 120 * 1000,
+            headers,
+        });
+        return res.data.result;
+    });
+}
+exports.increaseLiquidity = increaseLiquidity;
+function decreaseLiquidity({ network, postBody, apiKey, apiSecret, }) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const ts = Date.now();
+        const path = `/api/${network}/v1/adjust-liquidity`;
+        const url = `${config_1.BASE_URL_300K_API}${path}`;
+        const headers = (0, signUtils_1.create300kApiHeader)({ ts, method: 'POST', path, apiKey, apiSecret, postData: postBody });
+        const res = yield axios_1.default.post(url, postBody, {
+            timeout: 120 * 1000,
+            headers,
+        });
+        return res.data.result;
+    });
+}
+exports.decreaseLiquidity = decreaseLiquidity;
 function getPositionDetail({ network, tokenId, apiKey, apiSecret, withUnclaimedFees, }) {
     return __awaiter(this, void 0, void 0, function* () {
         const ts = Date.now();

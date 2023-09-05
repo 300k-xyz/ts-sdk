@@ -86,6 +86,47 @@ export declare function createPosition({ network, postBody, apiKey, apiSecret, }
         strategyType?: number;
     };
 }): Promise<CreatePositionResponse>;
+export declare function increaseLiquidity({ network, postBody, apiKey, apiSecret, }: {
+    apiKey: string;
+    apiSecret: string;
+    network: Network;
+    postBody: {
+        traderAddress: string;
+        walletAddress: string;
+        tokenId: number;
+        amount0Desired: number;
+        amount1Desired: number;
+        amount0Min: number;
+        amount1Min: number;
+        newClientOrderId?: string;
+        gasPrice?: string;
+        maxPriorityFeePerGas?: string;
+        estimateGasOnly?: boolean | 'skip';
+        strategyId?: number;
+        strategyType?: number;
+        autoSwap?: boolean;
+    };
+}): Promise<CreatePositionResponse>;
+export declare function decreaseLiquidity({ network, postBody, apiKey, apiSecret, }: {
+    apiKey: string;
+    apiSecret: string;
+    network: Network;
+    postBody: {
+        traderAddress: string;
+        walletAddress: string;
+        tokenId: number;
+        liquidity: string;
+        amount0Desired: number;
+        amount1Desired: number;
+        newClientOrderId?: string;
+        gasPrice?: string;
+        maxPriorityFeePerGas?: string;
+        estimateGasOnly?: boolean | 'skip';
+        strategyId?: number;
+        strategyType?: number;
+        autoSwap?: boolean;
+    };
+}): Promise<CreatePositionResponse>;
 export declare function getPositionDetail({ network, tokenId, apiKey, apiSecret, withUnclaimedFees, }: {
     network: string;
     tokenId: number;

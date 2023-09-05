@@ -67,7 +67,7 @@ export interface RawTxPartial {
     to: string;
     data: string;
 }
-export declare function getQuote({ network, query, apiKey, apiSecret, timeout }: {
+export declare function getQuote({ network, query, apiKey, apiSecret, timeout, }: {
     apiKey: string;
     apiSecret: string;
     network: Network;
