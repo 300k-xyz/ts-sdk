@@ -116,8 +116,8 @@ export declare function decreaseLiquidity({ network, postBody, apiKey, apiSecret
         walletAddress: string;
         tokenId: number;
         liquidity: string;
-        amount0Desired: number;
-        amount1Desired: number;
+        amount0Min: number;
+        amount1Min: number;
         newClientOrderId?: string;
         gasPrice?: string;
         maxPriorityFeePerGas?: string;
