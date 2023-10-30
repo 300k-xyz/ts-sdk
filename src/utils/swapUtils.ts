@@ -18,6 +18,7 @@ export interface CreateOrderParams {
   traderAddress: string;
   newClientOrderId?: string;
   dynamicGasPrice?: boolean;
+  gasSpeed?: 'fast' | 'slow';
   estimateGasOnly?: boolean | 'skip';
 }
 

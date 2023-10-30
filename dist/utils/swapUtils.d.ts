@@ -14,6 +14,7 @@ export interface CreateOrderParams {
     traderAddress: string;
     newClientOrderId?: string;
     dynamicGasPrice?: boolean;
+    gasSpeed?: 'fast' | 'slow';
     estimateGasOnly?: boolean | 'skip';
 }
 export declare function createOrder({ network, postBody, apiKey, apiSecret, timeout, }: {
