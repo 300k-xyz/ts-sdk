@@ -6,6 +6,7 @@ export enum Network {
   'celo' = 'celo',
   'optimism' = 'optimism',
   'avalanche' = 'avalanche',
+  'mantap' = 'mantap',
 }
 
 export enum ChainId {
@@ -26,6 +27,7 @@ export enum ChainId {
   GNOSIS = 100,
   MOONBEAM = 1284,
   AVALANCHE = 43114,
+  MANTA_PACIFIC = 169,
 }
 
 export function getChainIdFromNetwork(network: Network) {
@@ -44,6 +46,8 @@ export function getChainIdFromNetwork(network: Network) {
       return ChainId.OPTIMISM;
     case Network.avalanche:
       return ChainId.AVALANCHE;
+    case Network.mantap:
+      return ChainId.MANTA_PACIFIC;
   }
   throw new Error(`getChainIdFromNetwork unsupported network ${network}`);
 }
@@ -64,6 +68,8 @@ export function getNetworkFromChainId(chainId: ChainId): Network {
       return Network.optimism;
     case ChainId.AVALANCHE:
       return Network.avalanche;
+    case ChainId.MANTA_PACIFIC:
+      return Network.mantap;
   }
   throw new Error(`unsupported chainId ${chainId}`);
 }
