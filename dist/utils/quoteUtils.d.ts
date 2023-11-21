@@ -1,5 +1,5 @@
 import { Network } from './network';
-export type QuoteArr = [number, number, string, string, number];
+export type QuoteArr = [number, number, string, string, number, string[], string[]];
 export interface OrderbookResponse {
     symbol: string;
     amountUSD: number;

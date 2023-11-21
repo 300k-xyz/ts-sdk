@@ -3,8 +3,8 @@ import { BASE_URL_300K_API } from './config';
 import { create300kSignature } from './signUtils';
 import axios from 'axios';
 
-// [r.price, r.amountAsset, r.hash, r.path, r.gasUSD];
-export type QuoteArr = [number, number, string, string, number];
+// [r.price, r.amountAsset, r.hash, r.path, r.gasUSD, amounts, sqrtX96];
+export type QuoteArr = [number, number, string, string, number, string[], string[]];
 
 export interface OrderbookResponse {
   symbol: string;
