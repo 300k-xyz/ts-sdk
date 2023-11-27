@@ -95,14 +95,14 @@ export async function getNonce({
   };
 }): Promise<number> {
   const ts = Date.now();
-  const path = `/api/${network}/v1/get-nonce`;
+  const path = `/api/${network}/v1/get-nonce/${query.address}`;
   const url = `${BASE_URL_300K_API}${path}`;
   const headers = {
     'X-APIKEY': apiKey,
     'X-TS': ts,
     'X-SIGNATURE': create300kSignature({ ts, method: 'GET', path, apiSecret, postData: {} }),
   };
-  const res = await axios.get(url, { params: query, headers });
+  const res = await axios.get(url, { headers });
   return res.data.result;
 }
 

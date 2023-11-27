@@ -64,14 +64,14 @@ exports.getErc20Allowance = getErc20Allowance;
 function getNonce({ network, query, apiKey, apiSecret, }) {
     return __awaiter(this, void 0, void 0, function* () {
         const ts = Date.now();
-        const path = `/api/${network}/v1/get-nonce`;
+        const path = `/api/${network}/v1/get-nonce/${query.address}`;
         const url = `${config_1.BASE_URL_300K_API}${path}`;
         const headers = {
             'X-APIKEY': apiKey,
             'X-TS': ts,
             'X-SIGNATURE': (0, signUtils_1.create300kSignature)({ ts, method: 'GET', path, apiSecret, postData: {} }),
         };
-        const res = yield axios_1.default.get(url, { params: query, headers });
+        const res = yield axios_1.default.get(url, { headers });
         return res.data.result;
     });
 }
