@@ -19,7 +19,7 @@ const axios_1 = __importDefault(require("axios"));
 function getOrderBook({ network, query, apiKey, apiSecret, }) {
     return __awaiter(this, void 0, void 0, function* () {
         const ts = Date.now();
-        const path = `/api/${network}/v1/rfq/orderbook `;
+        const path = `/api/${network}/v1/rfq/orderbook`;
         const url = `${config_1.BASE_URL_300K_API}${path}`;
         const headers = {
             'X-APIKEY': apiKey,
@@ -38,7 +38,7 @@ exports.getOrderBook = getOrderBook;
 function getQuote({ network, query, apiKey, apiSecret, timeout = 120000, }) {
     return __awaiter(this, void 0, void 0, function* () {
         const ts = Date.now();
-        const path = `/api/${network}/v1/rfq/quote `;
+        const path = `/api/${network}/v1/rfq/quote`;
         const url = `${config_1.BASE_URL_300K_API}${path}`;
         const headers = {
             'X-APIKEY': apiKey,

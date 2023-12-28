@@ -34,7 +34,7 @@ export interface QuoteResponse {
     simulationError: boolean;
     gasPriceWei: string;
     route: Route[][];
-    allRoutes: [number, number, string, string, number][];
+    allRoutes: QuoteArr[];
     routeString: string;
     quoteId: string;
     rawTxPartial: RawTxPartial;

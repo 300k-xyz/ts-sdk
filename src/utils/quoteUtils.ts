@@ -64,9 +64,7 @@ export interface QuoteResponse {
   simulationError: boolean;
   gasPriceWei: string;
   route: Route[][];
-  // [0.000541395,0.001,"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48-0x2b591e99afe9f32eaa6214f7b7629768c40eeb39-0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2|0xf6dcdce0ac3001b2f67f750bc64ea5beb37b5824-0x9e0905249ceefffb9605e034b534544684a58be6|9970-3000","USDC-x30-HEX-30-WETH",22.319
-  // [price, amountAsset, route hash, route path, gas usd]
-  allRoutes: [number, number, string, string, number][];
+  allRoutes: QuoteArr[];
   routeString: string;
   quoteId: string;
   rawTxPartial: RawTxPartial;
