@@ -13,6 +13,7 @@ var Network;
     Network["mantap"] = "mantap";
     Network["metis"] = "metis";
     Network["base"] = "base";
+    Network["mantle"] = "mantle";
 })(Network = exports.Network || (exports.Network = {}));
 var ChainId;
 (function (ChainId) {
@@ -36,6 +37,7 @@ var ChainId;
     ChainId[ChainId["MANTA_PACIFIC"] = 169] = "MANTA_PACIFIC";
     ChainId[ChainId["METIS"] = 1088] = "METIS";
     ChainId[ChainId["BASE"] = 8453] = "BASE";
+    ChainId[ChainId["MANTLE"] = 5000] = "MANTLE";
 })(ChainId = exports.ChainId || (exports.ChainId = {}));
 function getChainIdFromNetwork(network) {
     switch (network) {
@@ -59,6 +61,8 @@ function getChainIdFromNetwork(network) {
             return ChainId.METIS;
         case Network.base:
             return ChainId.BASE;
+        case Network.mantle:
+            return ChainId.MANTLE;
     }
     throw new Error(`getChainIdFromNetwork unsupported network ${network}`);
 }
@@ -85,6 +89,8 @@ function getNetworkFromChainId(chainId) {
             return Network.metis;
         case ChainId.BASE:
             return Network.base;
+        case ChainId.MANTLE:
+            return Network.mantle;
     }
     throw new Error(`unsupported chainId ${chainId}`);
 }

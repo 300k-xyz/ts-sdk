@@ -9,6 +9,7 @@ export enum Network {
   'mantap' = 'mantap',
   'metis' = 'metis',
   'base' = 'base',
+  'mantle' = 'mantle',
 }
 
 export enum ChainId {
@@ -32,6 +33,7 @@ export enum ChainId {
   MANTA_PACIFIC = 169,
   METIS = 1088,
   BASE = 8453,
+  MANTLE = 5000,
 }
 
 export function getChainIdFromNetwork(network: Network) {
@@ -56,6 +58,8 @@ export function getChainIdFromNetwork(network: Network) {
       return ChainId.METIS;
     case Network.base:
       return ChainId.BASE;
+    case Network.mantle:
+      return ChainId.MANTLE;
   }
   throw new Error(`getChainIdFromNetwork unsupported network ${network}`);
 }
@@ -82,6 +86,8 @@ export function getNetworkFromChainId(chainId: ChainId): Network {
       return Network.metis;
     case ChainId.BASE:
       return Network.base;
+    case ChainId.MANTLE:
+      return Network.mantle;
   }
   throw new Error(`unsupported chainId ${chainId}`);
 }

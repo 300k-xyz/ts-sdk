@@ -8,7 +8,8 @@ export declare enum Network {
     'avalanche' = "avalanche",
     'mantap' = "mantap",
     'metis' = "metis",
-    'base' = "base"
+    'base' = "base",
+    'mantle' = "mantle"
 }
 export declare enum ChainId {
     MAINNET = 1,
@@ -30,7 +31,8 @@ export declare enum ChainId {
     AVALANCHE = 43114,
     MANTA_PACIFIC = 169,
     METIS = 1088,
-    BASE = 8453
+    BASE = 8453,
+    MANTLE = 5000
 }
-export declare function getChainIdFromNetwork(network: Network): ChainId.MAINNET | ChainId.OPTIMISM | ChainId.BSC | ChainId.ARBITRUM_ONE | ChainId.POLYGON | ChainId.CELO | ChainId.AVALANCHE | ChainId.MANTA_PACIFIC | ChainId.METIS | ChainId.BASE;
+export declare function getChainIdFromNetwork(network: Network): ChainId.MAINNET | ChainId.OPTIMISM | ChainId.BSC | ChainId.ARBITRUM_ONE | ChainId.POLYGON | ChainId.CELO | ChainId.AVALANCHE | ChainId.MANTA_PACIFIC | ChainId.METIS | ChainId.BASE | ChainId.MANTLE;
 export declare function getNetworkFromChainId(chainId: ChainId): Network;
