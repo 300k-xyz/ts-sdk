@@ -11,6 +11,8 @@ export enum Network {
   'base' = 'base',
   'mantle' = 'mantle',
   'linea' = 'linea',
+  'zksync' = 'zksync',
+  'blast' = 'blast',
 }
 
 export enum ChainId {
@@ -36,6 +38,8 @@ export enum ChainId {
   BASE = 8453,
   MANTLE = 5000,
   LINEA = 59144,
+  ZKSYNC = 324,
+  BLAST = 81457,
 }
 
 export function getChainIdFromNetwork(network: Network) {
@@ -64,6 +68,10 @@ export function getChainIdFromNetwork(network: Network) {
       return ChainId.MANTLE;
     case Network.linea:
       return ChainId.LINEA;
+    case Network.blast:
+      return ChainId.BLAST;
+    case Network.zksync:
+      return ChainId.ZKSYNC;
   }
   throw new Error(`getChainIdFromNetwork unsupported network ${network}`);
 }
@@ -94,6 +102,10 @@ export function getNetworkFromChainId(chainId: ChainId): Network {
       return Network.mantle;
     case ChainId.LINEA:
       return Network.linea;
+    case ChainId.ZKSYNC:
+      return Network.zksync;
+    case ChainId.BLAST:
+      return Network.blast;
   }
   throw new Error(`unsupported chainId ${chainId}`);
 }
