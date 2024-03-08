@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getNetworkFromChainId = exports.getChainIdFromNetwork = exports.networkToChainIdMap = exports.Network = void 0;
+exports.getNetworkFromChainId = exports.getChainIdFromNetwork = exports.ChainId = exports.networkToChainIdMap = exports.Network = void 0;
 var Network;
 (function (Network) {
     Network["ethereum"] = "ethereum";
@@ -34,33 +34,33 @@ exports.networkToChainIdMap = {
     zksync: 324,
     blast: 81457,
 };
-//
-// export enum ChainId {
-//   MAINNET = 1,
-//   ROPSTEN = 3,
-//   RINKEBY = 4,
-//   GÖRLI = 5,
-//   KOVAN = 42,
-//   OPTIMISM = 10,
-//   OPTIMISTIC_KOVAN = 69,
-//   BSC = 56,
-//   ARBITRUM_ONE = 42161,
-//   ARBITRUM_RINKEBY = 421611,
-//   POLYGON = 137,
-//   POLYGON_MUMBAI = 80001,
-//   CELO = 42220,
-//   CELO_ALFAJORES = 44787,
-//   GNOSIS = 100,
-//   MOONBEAM = 1284,
-//   AVALANCHE = 43114,
-//   MANTA_PACIFIC = 169,
-//   METIS = 1088,
-//   BASE = 8453,
-//   MANTLE = 5000,
-//   LINEA = 59144,
-//   ZKSYNC = 324,
-//   BLAST = 81457,
-// }
+var ChainId;
+(function (ChainId) {
+    ChainId[ChainId["MAINNET"] = 1] = "MAINNET";
+    ChainId[ChainId["ROPSTEN"] = 3] = "ROPSTEN";
+    ChainId[ChainId["RINKEBY"] = 4] = "RINKEBY";
+    ChainId[ChainId["G\u00D6RLI"] = 5] = "G\u00D6RLI";
+    ChainId[ChainId["KOVAN"] = 42] = "KOVAN";
+    ChainId[ChainId["OPTIMISM"] = 10] = "OPTIMISM";
+    ChainId[ChainId["OPTIMISTIC_KOVAN"] = 69] = "OPTIMISTIC_KOVAN";
+    ChainId[ChainId["BSC"] = 56] = "BSC";
+    ChainId[ChainId["ARBITRUM_ONE"] = 42161] = "ARBITRUM_ONE";
+    ChainId[ChainId["ARBITRUM_RINKEBY"] = 421611] = "ARBITRUM_RINKEBY";
+    ChainId[ChainId["POLYGON"] = 137] = "POLYGON";
+    ChainId[ChainId["POLYGON_MUMBAI"] = 80001] = "POLYGON_MUMBAI";
+    ChainId[ChainId["CELO"] = 42220] = "CELO";
+    ChainId[ChainId["CELO_ALFAJORES"] = 44787] = "CELO_ALFAJORES";
+    ChainId[ChainId["GNOSIS"] = 100] = "GNOSIS";
+    ChainId[ChainId["MOONBEAM"] = 1284] = "MOONBEAM";
+    ChainId[ChainId["AVALANCHE"] = 43114] = "AVALANCHE";
+    ChainId[ChainId["MANTA_PACIFIC"] = 169] = "MANTA_PACIFIC";
+    ChainId[ChainId["METIS"] = 1088] = "METIS";
+    ChainId[ChainId["BASE"] = 8453] = "BASE";
+    ChainId[ChainId["MANTLE"] = 5000] = "MANTLE";
+    ChainId[ChainId["LINEA"] = 59144] = "LINEA";
+    ChainId[ChainId["ZKSYNC"] = 324] = "ZKSYNC";
+    ChainId[ChainId["BLAST"] = 81457] = "BLAST";
+})(ChainId = exports.ChainId || (exports.ChainId = {}));
 function getChainIdFromNetwork(network) {
     return exports.networkToChainIdMap[network];
 }
